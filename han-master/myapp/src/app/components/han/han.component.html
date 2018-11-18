@@ -1,0 +1,203 @@
+<!-- css 폰트적용 부트스트랩 url -->
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&amp;subset=korean" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Gugi&amp;subset=korean" rel="stylesheet">
+
+
+<body>
+  <!-- 메인 페이지의 navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top" id="brand">한뮤니티</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <a class="nav-link js-scroll-trigger" href="https://www.hansung.ac.kr/web/www/home">한성대홈</a>
+            <a class="nav-link js-scroll-trigger" href="https://www.hansung.ac.kr/web/www/cmty_01_01">공지사항</a>
+            <a class="nav-link js-scroll-trigger" href="https://www.facebook.com/hansungluv/">페이스북</a>                     
+            <a class="nav-link js-scroll-trigger" href="https://www.hansung.ac.kr/web/www/cmty_01_03">학사공지</a>                        
+            <a class="nav-link js-scroll-trigger" href="#contact">낙산의메아리</a> 
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+<!-- 한뮤니티 이미지 -->
+  <img class="han" src="https://postfiles.pstatic.net/MjAxODExMTNfMTEg/MDAxNTQyMDk4MTI5NTUy.NN8HAtqZOfzp4h1MK-2GfxjbsdLTO1PeRlskR3GEIvAg.DNbEib8Dg0xsGoP0gixah8kdGipBJEKU9v_5UGEIsysg.PNG.poluro/hanmu.PNG?type=w773">
+
+<!-- 로그인 창 -->
+<div id="login" *ngIf="pageNum==0">
+  <form *ngIf="loginNum==0">
+    <div id="inputs">
+      <label for="id"> 아이디 : </label>
+      <input type="text" name="id">
+    </div>
+    <div id="inputs">
+      <label for="password"> 비밀번호 : </label>
+      <input type="password" name="password">
+    </div>
+    <div id="inputs">
+      <button id="bigbutton" type="submit" (click) = "changePage(1)"> 로그인 </button>
+    </div>
+    <div id="inputs">
+        <button id="otherbutton" (click) = "changeLogin(1)"> 회원가입 </button>
+        <button id="otherbutton"> ID/PW 찾기 </button>
+    </div>
+    <div id="inputs">
+        <input type="checkbox"> 로그인 정보 기억
+    </div>
+  </form>
+  <form *ngIf="loginNum==1">
+    <div id="inputs">
+      <label for="name"> 이름 : </label>
+      <input type="text" name="name">
+    </div>
+    <div id="inputs">
+      <label for="email"> 이메일 : </label>
+      <input type="password" name="password">
+    </div>
+    <div id="inputs">
+      <label for="id"> 아이디 : </label>
+      <input type="text" name="id">
+    </div>
+    <div id="inputs">
+      <label for="password"> 비밀번호 : </label>
+      <input type="password" name="password">
+    </div>
+    <div id="inputs">
+      <button id="bigbutton" type="submit" (click) = "changePage(1)"> 회원가입 </button>
+    </div>
+    <div id="inputs">
+      <button id="bigbutton" type="submit" (click) = "changeLogin(0)"> 돌아가기 </button>
+    </div>
+  </form>
+</div>
+
+
+<div id="fix" *ngIf="pageNum>0">
+  <div id="wrapper" class="sidebar-left">
+    <ul class="sider-nav">
+      <li><div id="boardlist" (click) = "changeBoard(1)"> 공부 게시판 </div></li>
+      <li><div id="boardlist" (click) = "changeBoard(2)"> Q&A </div></li>
+      <li><div id="boardlist" (click) = "changeBoard(3)"> 한성청원</div></li>
+      <li><div id="boardlist" (click) = "changeBoard(4)"> 한성투게더</div></li>
+    </ul>
+  </div>
+
+<!--메인 페이지 그리드 -->
+<div id="main">
+  <!-- <div id="boardmain" *ngIf="pageNum==1 && boardNum==0">
+    <div id="boardlist" (click) = "changeBoard(1)"> 공부 게시판 </div>
+    <div id="boardlist" (click) = "changeBoard(2)"> Q&A </div>
+    <div id="boardlist" (click) = "changeBoard(3)"> 한성청원</div>
+    <div id="boardlist" (click) = "changeBoard(4)"> 한성투게더</div>
+  </div> -->
+  
+  
+    <div id="boardstudy" *ngIf="pageNum==1 && boardNum==1">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">공부게시판</a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#"> 글쓰기 <span class="sr-only">(current)</span></a>
+              <div>
+                <ul class="nav justify-content-end">
+                  <a class="nav-item nav-link" href="#">Q&A</a>
+                  <a class="nav-item nav-link" href="#">한성청원</a>
+                  <a class="nav-item nav-link" href="#">한성투게더</a>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </nav>
+      <h1>공부게시판</h1>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary"></nav>
+    </div>
+    <div id="boardmeal" *ngIf="pageNum==1 && boardNum==2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <a class="navbar-brand" href="#">Q&A</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="#"> 글쓰기 <span class="sr-only">(current)</span></a>
+                <div>
+                  <ul class="nav justify-content-end">
+                    <a class="nav-item nav-link" href="#">공부게시판</a>
+                    <a class="nav-item nav-link" href="#">한성청원</a>
+                    <a class="nav-item nav-link" href="#">한성투게더</a>
+                  </ul>
+                </div>
+            </div>
+          </div>
+          
+        </nav>
+    </div>
+    <div id="boardcowork" *ngIf="pageNum==1 && boardNum==3">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <a class="navbar-brand" href="#">한성청원</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="#"> 글쓰기 <span class="sr-only">(current)</span></a>
+                <div>
+                  <ul class="nav justify-content-end">
+                    <a class="nav-item nav-link" href="#">공부게시판</a>
+                    <a class="nav-item nav-link" href="#">Q&A</a>
+                    <a class="nav-item nav-link" href="#">한성투게더</a>
+                  </ul>
+                </div>
+            </div>
+          </div>
+        </nav>
+    </div>
+    <div id="boardtip" *ngIf="pageNum==1 && boardNum==4">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <a class="navbar-brand" href="#">한성투게더</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="#"> 글쓰기 <span class="sr-only">(current)</span></a>
+                <div>
+                  <ul class="nav justify-content-end">
+                    <a class="nav-item nav-link" href="#">공부게시판</a>
+                    <a class="nav-item nav-link" href="#">Q&A</a>
+                    <a class="nav-item nav-link" href="#">한성청원</a>
+                  </ul>
+                </div>
+            </div>
+          </div>
+        </nav>
+    </div>
+    <div id="test" *ngIf="pageNum==1 && boardNum==5">
+      <app-user></app-user>
+    </div>
+    <div id="qna" *ngIf="pageNum==2">
+      <h1> Q&A </h1>
+    </div>
+    <div id="together" *ngIf="pageNum==3">
+      <h1> 한성투게더 </h1>
+    </div>
+    <div id="petition" *ngIf="pageNum==4">
+      <h1> 한성청원 </h1>
+    </div>
+  </div>
+</div>
+
+<!-- 부트스트랩4 시작 환경설정 -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
