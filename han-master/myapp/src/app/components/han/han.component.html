@@ -79,12 +79,10 @@
 
 <div id="fix" *ngIf="pageNum>0">
   <div id="wrapper" class="sidebar-left">
-    <ul class="sider-nav">
-      <li><div id="boardlist" (click) = "changeBoard(1)"> 공부 게시판 </div></li>
-      <li><div id="boardlist" (click) = "changeBoard(2)"> Q&A </div></li>
-      <li><div id="boardlist" (click) = "changeBoard(3)"> 한성청원</div></li>
-      <li><div id="boardlist" (click) = "changeBoard(4)"> 한성투게더</div></li>
-    </ul>
+    <div id="boardlist" (click) = "changeBoard(1)"> 공부 게시판 </div>
+    <div id="boardlist" (click) = "changeBoard(2)"> Q&A </div>
+    <div id="boardlist" (click) = "changeBoard(3)"> 한성청원</div>
+    <div id="boardlist" (click) = "changeBoard(4)"> 한성투게더</div>
   </div>
 
 <!--메인 페이지 그리드 -->
@@ -138,7 +136,6 @@
                 </div>
             </div>
           </div>
-          
         </nav>
     </div>
     <div id="boardcowork" *ngIf="pageNum==1 && boardNum==3">
@@ -160,6 +157,12 @@
             </div>
           </div>
         </nav>
+        <div id="written" *ngFor="let sample of samples">{{sample.title}}<br>{{sample.date}}</div>
+        <footer>
+            <label for="name"> 검색 </label>
+            <input type="text" name="search">
+            <button><img src="https://png.pngtree.com/element_pic/17/03/24/61e7397810c48656dfa148fdd66d229d.jpg" width="30px" height="30px"></button>
+        </footer>
     </div>
     <div id="boardtip" *ngIf="pageNum==1 && boardNum==4">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
